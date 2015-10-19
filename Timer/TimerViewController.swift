@@ -2,7 +2,7 @@
 //  TimerViewController.swift
 //  Timer
 //
-//  Updated by Taylor Mott on 10/19/15.
+//  Updated by Taylor Mott on 10/16/15.
 //  Copyright © 2015 DevMountain. All rights reserved.
 //
 
@@ -24,6 +24,24 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        guard let scheduledNotifications = UIApplication.sharedApplication().scheduledLocalNotifications else { return }
+        timer.stopTimer()
+        
+        for notification in scheduledNotifications {
+            if notification.category == Timer.kTimerAlert {
+                
+                UIApplication.sharedApplication().cancelLocalNotification(notification)
+                
+                let now = NSDate()
+                guard let fireDate = notification.fireDate, let userInfo = notification.userInfo as? [String : NSTimeInterval], let totalTime = userInfo[Timer.kTotalSeconds] else { return }
+                let timeRemainingOnCountdown = fireDate.timeIntervalSinceDate(now)
+                timer.setTime(timeRemainingOnCountdown, totalSeconds: totalTime)
+                updateTimerBasedViews()
+                timer.startTimer()
+                switchToTimerView()
+            }
+        }
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateTimerBasedViews", name: Timer.kTimerSecondTickNotification, object: timer)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "timerComplete", name: Timer.kTimerCompleteNotification, object: timer)
         
@@ -43,7 +61,36 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     }
     
     @IBAction func startButtonTapped() {
+        let hasAskedPermissions = NSUserDefaults.standardUserDefaults().boolForKey(AppDelegate.kHasAskedPermissions)
+        
+        if !hasAskedPermissions {
+            
+            let prePermissionAlert = UIAlertController(title: "Notification Permissions", message: "We need your permission to notify you when your timer is done. You can change this permission any time in your settings.", preferredStyle: .Alert)
+            prePermissionAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (_) in
+                UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil))
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: AppDelegate.kHasAskedPermissions)
+                self.toggleTimer()
+                
+            }))
+            prePermissionAlert.addAction(UIAlertAction(title: "Maybe later", style: .Cancel, handler: { (_) in
+                
+                let alarmNotSetAlert = UIAlertController(title: "Timer Not Set", message: "Your timer is not set. Please enable notification permissions.", preferredStyle: .Alert)
+                
+                alarmNotSetAlert.addAction(UIAlertAction(title: "Don't set timer", style: .Cancel, handler: nil))
+                alarmNotSetAlert.addAction(UIAlertAction(title: "Enable permission", style: .Default, handler: { (_) in
+                    UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil))
+                    NSUserDefaults.standardUserDefaults().setBool(true, forKey: AppDelegate.kHasAskedPermissions)
+                    self.toggleTimer()
+                }))
+                
+                self.navigationController?.presentViewController(alarmNotSetAlert, animated: true, completion: nil)
+            }))
+            
+            self.navigationController?.presentViewController(prePermissionAlert, animated: true, completion: nil)
+            
+        } else {
             self.toggleTimer()
+        }
     }
     
     func toggleTimer() {
@@ -66,7 +113,6 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     }
     
     @IBAction func pauseButtonTapped(sender: UIButton) {
-        //BLACK DIAMOND
     }
 
     //MARK: - UIPickerView Data Source

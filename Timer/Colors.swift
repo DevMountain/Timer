@@ -2,7 +2,7 @@
 //  Colors.swift
 //  Timer
 //
-//  Updated by Taylor Mott on 10/19/15.
+//  Updated by Taylor Mott on 10/16/15.
 //  Copyright © 2015 DevMountain. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  Timer.swift
 //  Timer
 //
-//  Updated by Taylor Mott on 10/19/15.
+//  Updated by Taylor Mott on 10/16/15.
 //  Copyright © 2015 DevMountain. All rights reserved.
 //
 
@@ -28,6 +28,7 @@ class Timer: NSObject {
             }
         }
     }
+    private var localNotification: UILocalNotification?
     
     func setTime(seconds: NSTimeInterval, totalSeconds: NSTimeInterval) {
         self.seconds = seconds
@@ -37,6 +38,7 @@ class Timer: NSObject {
     func startTimer() {
         if (timer == nil) {
             timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "secondTick", userInfo: nil, repeats: true)
+            armNotification()
         }
     }
     
@@ -44,6 +46,9 @@ class Timer: NSObject {
         if let timer = timer {
             timer.invalidate()
             self.timer = nil
+            if let localNotification = localNotification {
+                UIApplication.sharedApplication().cancelLocalNotification(localNotification)
+            }
         }
     }
     
@@ -86,5 +91,21 @@ class Timer: NSObject {
         }
         
         return hoursString + minutesString + secondsString
+    }
+    
+    func armNotification() {
+        let timerNotification = UILocalNotification()
+        let now = NSDate()
+        let fireDate = now.dateByAddingTimeInterval(seconds)
+        timerNotification.fireDate = fireDate
+        timerNotification.timeZone = NSTimeZone.localTimeZone()
+        timerNotification.soundName = "sms-received3.caf"
+        timerNotification.alertBody = "Timer Complete!"
+        timerNotification.category = Timer.kTimerAlert
+        timerNotification.userInfo = [Timer.kTotalSeconds : totalSeconds]
+        
+        localNotification = timerNotification
+        
+        UIApplication.sharedApplication().scheduleLocalNotification(timerNotification)
     }
 }

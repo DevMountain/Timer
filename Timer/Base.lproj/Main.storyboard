@@ -208,32 +208,74 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completed in Part 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Qo-YL-ZrT">
-                                <rect key="frame" x="224" y="289" width="152" height="21"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Af8-2H-F4J">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <subviews>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="sQL-uY-kta">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="287"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.94117647059999998" green="0.65490196079999996" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="466810970.84670597">
+                                            <!--2015-10-17 21:42:50 +0000-->
+                                        </date>
+                                    </datePicker>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your alarm is not set." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jol-7B-Pz3">
+                                        <rect key="frame" x="0.0" y="287" width="600" height="50"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.94117647059999998" green="0.65490196079999996" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="oLF-4P-vFe"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LGi-U2-Wka" userLabel="January 1, 1970, 00:00">
+                                        <rect key="frame" x="0.0" y="337" width="600" height="50"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.94117647059999998" green="0.65490196079999996" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="hkF-rx-egy"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3HQ-hS-pac">
+                                        <rect key="frame" x="0.0" y="387" width="600" height="100"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.0" green="0.56470588239999997" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="uGb-FB-pmD"/>
+                                        </constraints>
+                                        <state key="normal" title="Set Alarm">
+                                            <color key="titleColor" red="0.058823529409999999" green="0.82352941180000006" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="alarmButtonTapped:" destination="nPs-wR-fpY" eventType="touchUpInside" id="p4P-fz-ZtL"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alarm View Controller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6P-sg-re0">
-                                <rect key="frame" x="217" y="260" width="166" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.65490196079999996" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </stackView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.65490196079999996" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Vfo-d2-NI8" firstAttribute="top" secondItem="6Qo-YL-ZrT" secondAttribute="bottom" constant="241" id="EeV-6D-wn0"/>
-                            <constraint firstItem="Z6P-sg-re0" firstAttribute="centerX" secondItem="k4v-HG-Y7R" secondAttribute="centerX" id="PE4-eH-PgN"/>
-                            <constraint firstItem="6Qo-YL-ZrT" firstAttribute="top" secondItem="Z6P-sg-re0" secondAttribute="bottom" constant="8" symbolic="YES" id="Unc-Ua-Qse"/>
-                            <constraint firstItem="6Qo-YL-ZrT" firstAttribute="centerX" secondItem="Z6P-sg-re0" secondAttribute="centerX" id="jDV-LY-O7k"/>
-                            <constraint firstItem="6Qo-YL-ZrT" firstAttribute="centerY" secondItem="k4v-HG-Y7R" secondAttribute="centerY" id="lfV-yS-8Xa"/>
+                            <constraint firstItem="Af8-2H-F4J" firstAttribute="top" secondItem="JFg-NF-DO4" secondAttribute="bottom" id="CNe-h8-Lz8"/>
+                            <constraint firstItem="Af8-2H-F4J" firstAttribute="leading" secondItem="k4v-HG-Y7R" secondAttribute="leading" id="EMa-2c-Lsq"/>
+                            <constraint firstItem="Vfo-d2-NI8" firstAttribute="top" secondItem="Af8-2H-F4J" secondAttribute="bottom" id="ZBD-Mv-etc"/>
+                            <constraint firstAttribute="trailing" secondItem="Af8-2H-F4J" secondAttribute="trailing" id="fnI-lc-mOY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Alarm" id="ukF-6j-pCP"/>
+                    <connections>
+                        <outlet property="alarmButton" destination="3HQ-hS-pac" id="3bD-ul-ahu"/>
+                        <outlet property="dateLabel" destination="LGi-U2-Wka" id="NzK-35-UTa"/>
+                        <outlet property="datePicker" destination="sQL-uY-kta" id="WsV-Jl-gyM"/>
+                        <outlet property="messageLabel" destination="jol-7B-Pz3" id="7tG-jc-Noh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lhf-wj-Pup" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
