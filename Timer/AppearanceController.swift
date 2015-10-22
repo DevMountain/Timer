@@ -18,8 +18,8 @@ class AppearanceController {
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         UITabBar.appearance().barTintColor = UIColor.blueColorTimer()
         UITabBar.appearance().tintColor = UIColor.lightBlueColorTimer()
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.lightBlueColorTimer()], forState: .Normal)
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.whiteColor()], forState: .Selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.whiteColor()], forState: .Normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.lightBlueColorTimer()], forState: .Selected)
         
     }
 }

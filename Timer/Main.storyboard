@@ -164,11 +164,11 @@
             </objects>
             <point key="canvasLocation" x="2635" y="488"/>
         </scene>
-        <!--Item-->
+        <!--Timer-->
         <scene sceneID="tFr-1U-yS1">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QyG-w9-tmn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="5Au-Xk-aEU"/>
+                    <tabBarItem key="tabBarItem" title="Timer" image="timerIcon" selectedImage="timerIconSelected" id="5Au-Xk-aEU"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GDL-Ob-0c5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -183,39 +183,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mbW-tU-oEj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1823" y="488"/>
-        </scene>
-        <!--Alarm View Controller-->
-        <scene sceneID="ksB-jM-hAg">
-            <objects>
-                <viewController id="K5w-yd-7CY" customClass="AlarmViewController" customModule="Timer" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Y1u-3D-UZT"/>
-                        <viewControllerLayoutGuide type="bottom" id="kxq-pm-y7F"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="HHd-E0-Qs6">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alarm View Controller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CBP-OM-yT7">
-                                <rect key="frame" x="217" y="289" width="166" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="CBP-OM-yT7" firstAttribute="centerX" secondItem="HHd-E0-Qs6" secondAttribute="centerX" id="Jok-tZ-LC4"/>
-                            <constraint firstItem="CBP-OM-yT7" firstAttribute="centerY" secondItem="HHd-E0-Qs6" secondAttribute="centerY" id="pdu-cg-oaQ"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="8bo-SO-uOJ"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="s5X-l6-Iww" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2635" y="1233"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Vdr-Es-W2k">
@@ -236,11 +203,11 @@
             </objects>
             <point key="canvasLocation" x="1011" y="488"/>
         </scene>
-        <!--Item-->
+        <!--Alarm-->
         <scene sceneID="ndO-4T-wh7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RAV-49-fAq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="f7Z-jY-Adi"/>
+                    <tabBarItem key="tabBarItem" title="Alarm" image="alarmIcon" selectedImage="alarmIconSelected" id="f7Z-jY-Adi"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aG1-yg-JU3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -249,12 +216,103 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="K5w-yd-7CY" kind="relationship" relationship="rootViewController" id="yg6-Ea-kdU"/>
+                        <segue destination="Xhx-Yn-8vZ" kind="relationship" relationship="rootViewController" id="Dob-P3-ELf"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MwR-W6-xIE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1823" y="1233"/>
         </scene>
+        <!--Alarm-->
+        <scene sceneID="vD0-Xs-vsd">
+            <objects>
+                <viewController title="Alarm" id="Xhx-Yn-8vZ" customClass="AlarmViewController" customModule="Timer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LYv-0d-qh2"/>
+                        <viewControllerLayoutGuide type="bottom" id="sXB-nO-kiD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CVq-Ps-zR1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rjd-Pe-JWl">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <subviews>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="d3X-T7-zst">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="287"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.94117647059999998" green="0.65490196079999996" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="466810970.84670597">
+                                            <!--2015-10-17 21:42:50 +0000-->
+                                        </date>
+                                    </datePicker>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your alarm is not set." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ka-4y-xOd">
+                                        <rect key="frame" x="0.0" y="287" width="600" height="50"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.94117647059999998" green="0.65490196079999996" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="gRx-1X-FhE"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="40S-WL-kaM" userLabel="January 1, 1970, 00:00">
+                                        <rect key="frame" x="0.0" y="337" width="600" height="50"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.94117647059999998" green="0.65490196079999996" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="dmF-iY-yDx"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mOM-7Z-A9g">
+                                        <rect key="frame" x="0.0" y="387" width="600" height="100"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.0" green="0.56470588239999997" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="xZh-6g-6tR"/>
+                                        </constraints>
+                                        <state key="normal" title="Set Alarm">
+                                            <color key="titleColor" red="0.058823529409999999" green="0.82352941180000006" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="alarmButtonTapped:" destination="Xhx-Yn-8vZ" eventType="touchUpInside" id="APs-4N-Nuy"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.65490196079999996" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </stackView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" red="0.94117647059999998" green="0.65490196079999996" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="rjd-Pe-JWl" firstAttribute="top" secondItem="LYv-0d-qh2" secondAttribute="bottom" id="Itm-eO-QAh"/>
+                            <constraint firstItem="sXB-nO-kiD" firstAttribute="top" secondItem="rjd-Pe-JWl" secondAttribute="bottom" id="M5J-h1-p72"/>
+                            <constraint firstAttribute="trailing" secondItem="rjd-Pe-JWl" secondAttribute="trailing" id="Tj3-QF-PSW"/>
+                            <constraint firstItem="rjd-Pe-JWl" firstAttribute="leading" secondItem="CVq-Ps-zR1" secondAttribute="leading" id="rFi-kX-WZl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Alarm" id="gSi-21-f96"/>
+                    <connections>
+                        <outlet property="alarmButton" destination="mOM-7Z-A9g" id="wu2-k4-HxR"/>
+                        <outlet property="dateLabel" destination="40S-WL-kaM" id="2Ah-WL-Gwk"/>
+                        <outlet property="datePicker" destination="d3X-T7-zst" id="rnz-y2-Vvk"/>
+                        <outlet property="messageLabel" destination="2Ka-4y-xOd" id="GfH-H4-3gm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rl0-Mf-let" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2635" y="1233"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="alarmIcon" width="28" height="28"/>
+        <image name="alarmIconSelected" width="28" height="28"/>
+        <image name="timerIcon" width="28" height="28"/>
+        <image name="timerIconSelected" width="28" height="28"/>
+    </resources>
 </document>

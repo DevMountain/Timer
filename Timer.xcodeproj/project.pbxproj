@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0198FABB1BD9574B009E7D2D /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198FABA1BD9574B009E7D2D /* Alarm.swift */; settings = {ASSET_TAGS = (); }; };
 		01A6AB431BD55A8600293874 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01A6AB421BD55A8600293874 /* Assets.xcassets */; };
 		01A6AB461BD55A8600293874 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01A6AB441BD55A8600293874 /* LaunchScreen.storyboard */; };
 		01A6AB511BD55A8600293874 /* TimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A6AB501BD55A8600293874 /* TimerTests.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0198FABA1BD9574B009E7D2D /* Alarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		01A6AB381BD55A8500293874 /* Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01A6AB421BD55A8600293874 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01A6AB451BD55A8600293874 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				01A6AB691BD55B1800293874 /* AppDelegate.swift */,
 				01A6AB421BD55A8600293874 /* Assets.xcassets */,
 				01E24CF61BD6A2F60009B604 /* README.md */,
+				0198FABA1BD9574B009E7D2D /* Alarm.swift */,
 				01E24D3C1BD80BFC0009B604 /* AppearanceController.swift */,
 				01E24D381BD7F8380009B604 /* Timer.swift */,
 				01A6AB6B1BD55B4500293874 /* Main.storyboard */,
@@ -274,6 +277,7 @@
 				01E24CFB1BD6BD010009B604 /* AlarmViewController.swift in Sources */,
 				01E24D3B1BD807D60009B604 /* Colors.swift in Sources */,
 				01E24CF71BD6A2F60009B604 /* README.md in Sources */,
+				0198FABB1BD9574B009E7D2D /* Alarm.swift in Sources */,
 				01E24D3D1BD80BFC0009B604 /* AppearanceController.swift in Sources */,
 				01E24CF91BD6A6120009B604 /* TimerViewController.swift in Sources */,
 				01E24D391BD7F8380009B604 /* Timer.swift in Sources */,
