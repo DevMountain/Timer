@@ -36,6 +36,7 @@ class Alarm: NSObject {
         alarmNotification.category = Alarm.categoryAlarm
         
         UIApplication.sharedApplication().scheduleLocalNotification(alarmNotification)
+        localNotification = alarmNotification
     }
     
     func cancel() {
