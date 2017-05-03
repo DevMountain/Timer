@@ -25,12 +25,10 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         pauseButton.layer.cornerRadius = pauseButton.bounds.height / 2
         pauseButton.layer.masksToBounds = true
         pauseButton.layer.borderWidth = 2.0
-        pauseButton.layer.borderColor = UIColor.blueTimerColor.cgColor
-        
+		
         startButton.layer.cornerRadius = startButton.bounds.height / 2
         startButton.layer.masksToBounds = true
         startButton.layer.borderWidth = 2.0
-        startButton.layer.borderColor = UIColor.lightBlueTimerColor.cgColor
     }
 	
     //MARK: Actions
@@ -111,11 +109,6 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         progressView.isHidden = false
         pickerStackView.isHidden = true
         startButton.setTitle("Cancel", for: [])
-        
-        startButton.setTitleColor(UIColor.blueTimerColor, for: [])
-        startButton.layer.borderColor = UIColor.blueTimerColor.cgColor
-        pauseButton.setTitleColor(UIColor.lightBlueTimerColor, for: [])
-        pauseButton.layer.borderColor = UIColor.lightBlueTimerColor.cgColor
     }
     
     private func switchToPickerView() {
@@ -123,11 +116,6 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         timerLabel.isHidden = true
         progressView.isHidden = true
         startButton.setTitle("Start", for: [])
-        
-        startButton.setTitleColor(UIColor.lightBlueTimerColor, for: [])
-        startButton.layer.borderColor = UIColor.lightBlueTimerColor.cgColor
-        pauseButton.setTitleColor(UIColor.blueTimerColor, for: [])
-        pauseButton.layer.borderColor = UIColor.blueTimerColor.cgColor
     }
 
 	// MARK: Properties

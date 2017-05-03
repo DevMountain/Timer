@@ -71,7 +71,6 @@
                                                 </constraints>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.94117647059999998" green="0.65490196079999996" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="RhZ-h7-GfE" firstAttribute="top" secondItem="CxO-xX-Cuq" secondAttribute="top" id="17c-E6-k9Q"/>
                                             <constraint firstItem="RhZ-h7-GfE" firstAttribute="leadingMargin" secondItem="CxO-xX-Cuq" secondAttribute="leading" id="5qr-Q3-Pfh"/>
@@ -116,7 +115,6 @@
                                                 </constraints>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.94117647059999998" green="0.65490196079999996" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="9zi-CJ-6iG" secondAttribute="bottom" id="0px-Wt-acL"/>
                                             <constraint firstItem="9zi-CJ-6iG" firstAttribute="top" secondItem="XHI-ix-3Vu" secondAttribute="top" id="k3J-ZK-nLJ"/>
@@ -125,7 +123,6 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rqy-CA-w3K" userLabel="Bottom View">
                                         <rect key="frame" x="0.0" y="316" width="375" height="238"/>
-                                        <color key="backgroundColor" red="0.94117647059999998" green="0.65490196079999996" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                 </subviews>
                             </stackView>
@@ -227,14 +224,12 @@
                                 <subviews>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="d3X-T7-zst">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="354"/>
-                                        <color key="backgroundColor" red="0.94117647059999998" green="0.65490196079999996" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <date key="date" timeIntervalSinceReferenceDate="466810970.84670597">
                                             <!--2015-10-17 21:42:50 +0000-->
                                         </date>
                                     </datePicker>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your alarm is not set." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ka-4y-xOd">
                                         <rect key="frame" x="0.0" y="354" width="375" height="50"/>
-                                        <color key="backgroundColor" red="0.94117647059999998" green="0.65490196079999996" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="gRx-1X-FhE"/>
                                         </constraints>
@@ -244,7 +239,6 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="40S-WL-kaM" userLabel="January 1, 1970, 00:00">
                                         <rect key="frame" x="0.0" y="404" width="375" height="50"/>
-                                        <color key="backgroundColor" red="0.94117647059999998" green="0.65490196079999996" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="dmF-iY-yDx"/>
                                         </constraints>
@@ -254,22 +248,17 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mOM-7Z-A9g">
                                         <rect key="frame" x="0.0" y="454" width="375" height="100"/>
-                                        <color key="backgroundColor" red="0.0" green="0.56470588239999997" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="xZh-6g-6tR"/>
                                         </constraints>
-                                        <state key="normal" title="Set Alarm">
-                                            <color key="titleColor" red="0.058823529409999999" green="0.82352941180000006" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
+                                        <state key="normal" title="Set Alarm"/>
                                         <connections>
                                             <action selector="alarmButtonTapped:" destination="Xhx-Yn-8vZ" eventType="touchUpInside" id="APs-4N-Nuy"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.94117647059999998" green="0.65490196079999996" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.94117647059999998" green="0.65490196079999996" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="rjd-Pe-JWl" firstAttribute="top" secondItem="LYv-0d-qh2" secondAttribute="bottom" id="Itm-eO-QAh"/>
                             <constraint firstItem="sXB-nO-kiD" firstAttribute="top" secondItem="rjd-Pe-JWl" secondAttribute="bottom" id="M5J-h1-p72"/>
