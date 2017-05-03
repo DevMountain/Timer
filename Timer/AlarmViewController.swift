@@ -9,19 +9,11 @@
 import UIKit
 
 class AlarmViewController: UIViewController {
-    
-    @IBOutlet weak var alarmButton: UIButton!
-    @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var messageLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    
-    let alarm = Alarm()
-    
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         datePicker.minimumDate = Date()
-        // Do any additional setup after loading the view.
-        
+		
 		NotificationCenter.default.addObserver(self, selector: #selector(switchToAlarmNotSetView(_:)), name: .alarmFiredNotification, object: nil)
         
         guard let scheduledNotifications = UIApplication.shared.scheduledLocalNotifications else { return }
@@ -37,12 +29,7 @@ class AlarmViewController: UIViewController {
             }
         }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+	
     @IBAction func alarmButtonTapped(_ sender: AnyObject) {
         if alarm.isArmed {
             alarm.cancel()
@@ -51,13 +38,15 @@ class AlarmViewController: UIViewController {
             armAlarm()
         }
     }
+	
+	// MARK: Private
     
-    func armAlarm() {
+    private func armAlarm() {
         alarm.arm(datePicker.date)
         switchToAlarmSetView()
     }
     
-	func switchToAlarmSetView() {
+	private func switchToAlarmSetView() {
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = .short
         dateFormatter.dateStyle = .long
@@ -75,7 +64,7 @@ class AlarmViewController: UIViewController {
         datePicker.isUserInteractionEnabled = false
     }
     
-    func switchToAlarmNotSetView(_ notification: Notification?) {
+   private dynamic func switchToAlarmNotSetView(_ notification: Notification?) {
         alarm.cancel()
         messageLabel.text = "Your alarm is not set."
         dateLabel.text = ""
@@ -84,5 +73,13 @@ class AlarmViewController: UIViewController {
         datePicker.date = Date()
         datePicker.isUserInteractionEnabled = true
     }
-    
+	
+	// MARK: Properties
+	
+	let alarm = Alarm()
+	
+	@IBOutlet weak var alarmButton: UIButton!
+	@IBOutlet weak var datePicker: UIDatePicker!
+	@IBOutlet weak var messageLabel: UILabel!
+	@IBOutlet weak var dateLabel: UILabel!
 }

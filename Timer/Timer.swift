@@ -15,73 +15,78 @@ extension Notification.Name {
 
 class Timer: NSObject {
 	
-    fileprivate(set) var seconds = TimeInterval(0)
-    fileprivate(set) var totalSeconds = TimeInterval(0)
-    fileprivate var timer: Foundation.Timer?
-    var isOn: Bool {
-        get {
-            if timer != nil {
-                return true
-            } else {
-                return false
-            }
-        }
-    }
-    var string: String {
-        get {
-            let totalSeconds = Int(self.seconds)
-            
-            let hours = totalSeconds / 3600
-            let minutes = (totalSeconds - (hours * 3600)) / 60
-            let seconds = totalSeconds - (hours * 3600) - (minutes * 60)
-            
-            var hoursString = ""
-            if hours > 0 {
-                hoursString = "\(hours):"
-            }
-            
-            var minutesString = ""
-            if minutes < 10 {
-                minutesString = "0\(minutes):"
-            } else {
-                minutesString = "\(minutes):"
-            }
-            
-            var secondsString = ""
-            if seconds < 10 {
-                secondsString = "0\(seconds)"
-            } else {
-                secondsString = "\(seconds)"
-            }
-            
-            return hoursString + minutesString + secondsString
-        }
-    }
-    
-    func setTimer(_ seconds: TimeInterval, totalSeconds: TimeInterval) {
-        self.seconds = seconds
-        self.totalSeconds = totalSeconds
-    }
-    
-    func startTimer() {
-        if !isOn {
-			timer = Foundation.Timer.scheduledTimer(timeInterval: TimeInterval(1.0), target: self, selector: #selector(secondTick(_:)), userInfo: nil, repeats: true)
-        }
-    }
-    
-    func stopTimer() {
-        if isOn {
-            timer?.invalidate()
-            timer = nil
-        }
-    }
+	func setTimer(_ secondsRemaining: TimeInterval, totalSeconds: TimeInterval) {
+		self.secondsRemaining = secondsRemaining
+		self.totalSeconds = totalSeconds
+	}
 	
-	func secondTick(_ timer: Foundation.Timer) {
-        seconds -= 1
-        NotificationCenter.default.post(name: .secondTickNotification, object: self)
-        if seconds <= 0 {
-            stopTimer()
-            NotificationCenter.default.post(name: .timerCompleteNotification, object: self)
-        }
-    }
+	func start() {
+		guard !isOn else { return }
+		timer = Foundation.Timer.scheduledTimer(timeInterval: TimeInterval(1.0), target: self, selector: #selector(secondTick(_:)), userInfo: nil, repeats: true)
+	}
+	
+	func togglePause() {
+		if isOn {
+			stop()
+		} else {
+			start()
+		}
+	}
+	
+	func stop() {
+		guard isOn else { return }
+		timer = nil
+	}
+	
+	// MARK: Private
+	
+	private dynamic func secondTick(_ timer: Foundation.Timer) {
+		secondsRemaining -= 1
+		NotificationCenter.default.post(name: .secondTickNotification, object: self)
+		if secondsRemaining <= 0 {
+			stop()
+			NotificationCenter.default.post(name: .timerCompleteNotification, object: self)
+		}
+	}
+	
+	// MARK: Properties
+	
+	private(set) var secondsRemaining = TimeInterval(0)
+	private(set) var totalSeconds = TimeInterval(0)
+	private var timer: Foundation.Timer? {
+		willSet {
+			timer?.invalidate()
+		}
+	}
+	
+	var isOn: Bool { return timer != nil }
+	
+	var timeRemainingString: String {
+		let totalSeconds = Int(secondsRemaining)
+		
+		let hours = totalSeconds / 3600
+		let minutes = (totalSeconds - (hours * 3600)) / 60
+		let seconds = totalSeconds - (hours * 3600) - (minutes * 60)
+		
+		var hoursString = ""
+		if hours > 0 {
+			hoursString = "\(hours):"
+		}
+		
+		var minutesString = ""
+		if minutes < 10 {
+			minutesString = "0\(minutes):"
+		} else {
+			minutesString = "\(minutes):"
+		}
+		
+		var secondsString = ""
+		if seconds < 10 {
+			secondsString = "0\(seconds)"
+		} else {
+			secondsString = "\(seconds)"
+		}
+		
+		return hoursString + minutesString + secondsString
+	}
 }

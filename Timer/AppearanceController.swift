@@ -9,17 +9,17 @@
 import Foundation
 import UIKit
 
-class AppearanceController {
+enum Theme {
     
-    static func initalizeAppearance() {
+    static func configureAppearance() {
         
         //Set colors for entire app.
-        UINavigationBar.appearance().barTintColor = UIColor.orangeColorTimer()
+        UINavigationBar.appearance().barTintColor = UIColor.orangeTimerColor
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
-        UITabBar.appearance().barTintColor = UIColor.blueColorTimer()
-        UITabBar.appearance().tintColor = UIColor.lightBlueColorTimer()
+        UITabBar.appearance().barTintColor = UIColor.blueTimerColor
+        UITabBar.appearance().tintColor = UIColor.lightBlueTimerColor
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.white], for: UIControlState())
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.lightBlueColorTimer()], for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.lightBlueTimerColor], for: .selected)
         
     }
 }

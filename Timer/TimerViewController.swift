@@ -9,17 +9,7 @@
 import UIKit
 
 class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-
-    @IBOutlet weak var timerLabel: UILabel!
-    @IBOutlet weak var hoursPickerView: UIPickerView!
-    @IBOutlet weak var minutesPickerView: UIPickerView!
-    @IBOutlet weak var startButton: UIButton!
-    @IBOutlet weak var pauseButton: UIButton!
-    @IBOutlet weak var pickerStackView: UIStackView!
-    @IBOutlet weak var progressView: UIProgressView!
-    
-    var timer = Timer()
-    
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,29 +25,25 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         pauseButton.layer.cornerRadius = pauseButton.bounds.height / 2
         pauseButton.layer.masksToBounds = true
         pauseButton.layer.borderWidth = 2.0
-        pauseButton.layer.borderColor = UIColor.blueColorTimer().cgColor
+        pauseButton.layer.borderColor = UIColor.blueTimerColor.cgColor
         
         startButton.layer.cornerRadius = startButton.bounds.height / 2
         startButton.layer.masksToBounds = true
         startButton.layer.borderWidth = 2.0
-        startButton.layer.borderColor = UIColor.lightBlueColorTimer().cgColor
+        startButton.layer.borderColor = UIColor.lightBlueTimerColor.cgColor
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    //MARK: - UIButton Action Methods
+	
+    //MARK: Actions
     
     @IBAction func pauseButtonTapped() {
+		timer.togglePause()
     }
     
     @IBAction func startButtonTapped() {
         toggleTimer()
     }
     
-    //MARK: - UIPickerView Protocols
+    //MARK: UIPickerViewDelegate/DataSource
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -76,11 +62,11 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         return String(row)
     }
     
-    //MARK: - View Updating Methods
+    //MARK: Private
     
-    func toggleTimer() {
+    private func toggleTimer() {
         if timer.isOn {
-            timer.stopTimer()
+            timer.stop()
             switchToPickerView()
         } else {
             switchToTimerView()
@@ -91,70 +77,68 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
             
             timer.setTimer(totalSecondsSetOnTimer, totalSeconds: totalSecondsSetOnTimer)
             updateTimerBasedViews()
-            timer.startTimer()
+            timer.start()
         }
     }
     
-    func updateTimerLabel() {
-        
-        timerLabel.text = timer.string
+    private func updateTimerLabel() {
+        timerLabel.text = timer.timeRemainingString
     }
     
-    func updateProgressView() {
+    private func updateProgressView() {
         
-        let secondsElasped = timer.totalSeconds - timer.seconds
-        
+        let secondsElasped = timer.totalSeconds - timer.secondsRemaining
         let progress = Float(secondsElasped) / Float(timer.totalSeconds)
-        
         progressView.setProgress(progress, animated: true)
     }
     
-	func updateTimerBasedViews(_ notification: Notification) {
+	private dynamic func updateTimerBasedViews(_ notification: Notification) {
 		updateTimerBasedViews()
     }
 	
-	func updateTimerBasedViews() {
+	private func updateTimerBasedViews() {
 		updateTimerLabel()
 		updateProgressView()
 	}
     
-    func timerComplete(_ notification: Notification) {
+    private dynamic func timerComplete(_ notification: Notification) {
         switchToPickerView()
     }
     
-    func switchToTimerView() {
+    private func switchToTimerView() {
         timerLabel.isHidden = false
         progressView.setProgress(0.0, animated: false)
         progressView.isHidden = false
         pickerStackView.isHidden = true
-        startButton.setTitle("Cancel", for: UIControlState())
+        startButton.setTitle("Cancel", for: [])
         
-        startButton.setTitleColor(UIColor.blueColorTimer(), for: UIControlState())
-        startButton.layer.borderColor = UIColor.blueColorTimer().cgColor
-        pauseButton.setTitleColor(UIColor.lightBlueColorTimer(), for: UIControlState())
-        pauseButton.layer.borderColor = UIColor.lightBlueColorTimer().cgColor
+        startButton.setTitleColor(UIColor.blueTimerColor, for: [])
+        startButton.layer.borderColor = UIColor.blueTimerColor.cgColor
+        pauseButton.setTitleColor(UIColor.lightBlueTimerColor, for: [])
+        pauseButton.layer.borderColor = UIColor.lightBlueTimerColor.cgColor
     }
     
-    func switchToPickerView() {
+    private func switchToPickerView() {
         pickerStackView.isHidden = false
         timerLabel.isHidden = true
         progressView.isHidden = true
-        startButton.setTitle("Start", for: UIControlState())
+        startButton.setTitle("Start", for: [])
         
-        startButton.setTitleColor(UIColor.lightBlueColorTimer(), for: UIControlState())
-        startButton.layer.borderColor = UIColor.lightBlueColorTimer().cgColor
-        pauseButton.setTitleColor(UIColor.blueColorTimer(), for: UIControlState())
-        pauseButton.layer.borderColor = UIColor.blueColorTimer().cgColor
+        startButton.setTitleColor(UIColor.lightBlueTimerColor, for: [])
+        startButton.layer.borderColor = UIColor.lightBlueTimerColor.cgColor
+        pauseButton.setTitleColor(UIColor.blueTimerColor, for: [])
+        pauseButton.layer.borderColor = UIColor.blueTimerColor.cgColor
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+	// MARK: Properties
+	
+	var timer = Timer()
+	
+	@IBOutlet weak var timerLabel: UILabel!
+	@IBOutlet weak var hoursPickerView: UIPickerView!
+	@IBOutlet weak var minutesPickerView: UIPickerView!
+	@IBOutlet weak var startButton: UIButton!
+	@IBOutlet weak var pauseButton: UIButton!
+	@IBOutlet weak var pickerStackView: UIStackView!
+	@IBOutlet weak var progressView: UIProgressView!
 }
