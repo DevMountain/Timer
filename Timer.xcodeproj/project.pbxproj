@@ -7,19 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0198FABB1BD9574B009E7D2D /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198FABA1BD9574B009E7D2D /* Alarm.swift */; settings = {ASSET_TAGS = (); }; };
+		0198FABB1BD9574B009E7D2D /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198FABA1BD9574B009E7D2D /* Alarm.swift */; };
 		01A6AB431BD55A8600293874 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01A6AB421BD55A8600293874 /* Assets.xcassets */; };
 		01A6AB461BD55A8600293874 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01A6AB441BD55A8600293874 /* LaunchScreen.storyboard */; };
 		01A6AB511BD55A8600293874 /* TimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A6AB501BD55A8600293874 /* TimerTests.swift */; };
 		01A6AB5C1BD55A8600293874 /* TimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A6AB5B1BD55A8600293874 /* TimerUITests.swift */; };
-		01A6AB6A1BD55B1800293874 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A6AB691BD55B1800293874 /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
-		01A6AB6C1BD55B4500293874 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01A6AB6B1BD55B4500293874 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
-		01E24CF71BD6A2F60009B604 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 01E24CF61BD6A2F60009B604 /* README.md */; settings = {ASSET_TAGS = (); }; };
-		01E24CF91BD6A6120009B604 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E24CF81BD6A6120009B604 /* TimerViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		01E24CFB1BD6BD010009B604 /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E24CFA1BD6BD010009B604 /* AlarmViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		01E24D391BD7F8380009B604 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E24D381BD7F8380009B604 /* Timer.swift */; settings = {ASSET_TAGS = (); }; };
-		01E24D3B1BD807D60009B604 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E24D3A1BD807D60009B604 /* Colors.swift */; settings = {ASSET_TAGS = (); }; };
-		01E24D3D1BD80BFC0009B604 /* AppearanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E24D3C1BD80BFC0009B604 /* AppearanceController.swift */; settings = {ASSET_TAGS = (); }; };
+		01A6AB6A1BD55B1800293874 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A6AB691BD55B1800293874 /* AppDelegate.swift */; };
+		01A6AB6C1BD55B4500293874 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01A6AB6B1BD55B4500293874 /* Main.storyboard */; };
+		01E24CF91BD6A6120009B604 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E24CF81BD6A6120009B604 /* TimerViewController.swift */; };
+		01E24CFB1BD6BD010009B604 /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E24CFA1BD6BD010009B604 /* AlarmViewController.swift */; };
+		01E24D391BD7F8380009B604 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E24D381BD7F8380009B604 /* Timer.swift */; };
+		01E24D3B1BD807D60009B604 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E24D3A1BD807D60009B604 /* Colors.swift */; };
+		01E24D3D1BD80BFC0009B604 /* AppearanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E24D3C1BD80BFC0009B604 /* AppearanceController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +52,6 @@
 		01A6AB5D1BD55A8600293874 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01A6AB691BD55B1800293874 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01A6AB6B1BD55B4500293874 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		01E24CF61BD6A2F60009B604 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		01E24CF81BD6A6120009B604 /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		01E24CFA1BD6BD010009B604 /* AlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
 		01E24D381BD7F8380009B604 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
@@ -111,7 +109,6 @@
 			children = (
 				01A6AB691BD55B1800293874 /* AppDelegate.swift */,
 				01A6AB421BD55A8600293874 /* Assets.xcassets */,
-				01E24CF61BD6A2F60009B604 /* README.md */,
 				0198FABA1BD9574B009E7D2D /* Alarm.swift */,
 				01E24D3C1BD80BFC0009B604 /* AppearanceController.swift */,
 				01E24D381BD7F8380009B604 /* Timer.swift */,
@@ -206,18 +203,21 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = DevMountain;
 				TargetAttributes = {
 					01A6AB371BD55A8500293874 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0830;
 					};
 					01A6AB4B1BD55A8600293874 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0830;
 						TestTargetID = 01A6AB371BD55A8500293874;
 					};
 					01A6AB561BD55A8600293874 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0830;
 						TestTargetID = 01A6AB371BD55A8500293874;
 					};
 				};
@@ -276,7 +276,6 @@
 			files = (
 				01E24CFB1BD6BD010009B604 /* AlarmViewController.swift in Sources */,
 				01E24D3B1BD807D60009B604 /* Colors.swift in Sources */,
-				01E24CF71BD6A2F60009B604 /* README.md in Sources */,
 				0198FABB1BD9574B009E7D2D /* Alarm.swift in Sources */,
 				01E24D3D1BD80BFC0009B604 /* AppearanceController.swift in Sources */,
 				01E24CF91BD6A6120009B604 /* TimerViewController.swift in Sources */,
@@ -341,8 +340,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -385,8 +386,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -405,6 +408,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -419,6 +423,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = in.DevMounta.Timer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -431,6 +436,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = in.DevMounta.Timer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -442,6 +448,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = in.DevMounta.TimerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Timer.app/Timer";
 			};
 			name = Debug;
@@ -454,6 +461,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = in.DevMounta.TimerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Timer.app/Timer";
 			};
 			name = Release;
@@ -465,6 +473,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = in.DevMounta.TimerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Timer;
 				USES_XCTRUNNER = YES;
 			};
@@ -477,6 +486,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = in.DevMounta.TimerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Timer;
 				USES_XCTRUNNER = YES;
 			};
