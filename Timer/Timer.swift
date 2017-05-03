@@ -75,8 +75,8 @@ class Timer: NSObject {
             timer = nil
         }
     }
-
-	func secondTick(_ notification: Notification) {
+	
+	func secondTick(_ timer: Foundation.Timer) {
         seconds -= 1
         NotificationCenter.default.post(name: .secondTickNotification, object: self)
         if seconds <= 0 {
