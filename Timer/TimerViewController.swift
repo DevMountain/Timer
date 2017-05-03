@@ -25,8 +25,8 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
 
         // Do any additional setup after loading the view.
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateTimerBasedViews", name: Timer.notificationSecondTick, object: timer)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "timerComplete", name: Timer.notificationComplete, object: timer)
+		NotificationCenter.default.addObserver(self, selector: #selector(updateTimerBasedViews(_:)), name: .secondTickNotification, object: timer)
+		NotificationCenter.default.addObserver(self, selector: #selector(timerComplete(_:)), name: .timerCompleteNotification, object: timer)
         
         minutesPickerView.selectRow(1, inComponent: 0, animated: false)
         
@@ -35,12 +35,12 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         pauseButton.layer.cornerRadius = pauseButton.bounds.height / 2
         pauseButton.layer.masksToBounds = true
         pauseButton.layer.borderWidth = 2.0
-        pauseButton.layer.borderColor = UIColor.blueColorTimer().CGColor
+        pauseButton.layer.borderColor = UIColor.blueColorTimer().cgColor
         
         startButton.layer.cornerRadius = startButton.bounds.height / 2
         startButton.layer.masksToBounds = true
         startButton.layer.borderWidth = 2.0
-        startButton.layer.borderColor = UIColor.lightBlueColorTimer().CGColor
+        startButton.layer.borderColor = UIColor.lightBlueColorTimer().cgColor
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,11 +58,11 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     }
     
     //MARK: - UIPickerView Protocols
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView === hoursPickerView {
             return 24
         } else if pickerView === minutesPickerView {
@@ -72,7 +72,7 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         }
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return String(row)
     }
     
@@ -85,9 +85,9 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         } else {
             switchToTimerView()
             
-            let hours = hoursPickerView.selectedRowInComponent(0)
-            let minutes = minutesPickerView.selectedRowInComponent(0) + (hours * 60)
-            let totalSecondsSetOnTimer = NSTimeInterval(minutes * 60)
+            let hours = hoursPickerView.selectedRow(inComponent: 0)
+            let minutes = minutesPickerView.selectedRow(inComponent: 0) + (hours * 60)
+            let totalSecondsSetOnTimer = TimeInterval(minutes * 60)
             
             timer.setTimer(totalSecondsSetOnTimer, totalSeconds: totalSecondsSetOnTimer)
             updateTimerBasedViews()
@@ -109,38 +109,42 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         progressView.setProgress(progress, animated: true)
     }
     
-    func updateTimerBasedViews() {
-        updateTimerLabel()
-        updateProgressView()
+	func updateTimerBasedViews(_ notification: Notification) {
+		updateTimerBasedViews()
     }
+	
+	func updateTimerBasedViews() {
+		updateTimerLabel()
+		updateProgressView()
+	}
     
-    func timerComplete() {
+    func timerComplete(_ notification: Notification) {
         switchToPickerView()
     }
     
     func switchToTimerView() {
-        timerLabel.hidden = false
+        timerLabel.isHidden = false
         progressView.setProgress(0.0, animated: false)
-        progressView.hidden = false
-        pickerStackView.hidden = true
-        startButton.setTitle("Cancel", forState: .Normal)
+        progressView.isHidden = false
+        pickerStackView.isHidden = true
+        startButton.setTitle("Cancel", for: UIControlState())
         
-        startButton.setTitleColor(UIColor.blueColorTimer(), forState: .Normal)
-        startButton.layer.borderColor = UIColor.blueColorTimer().CGColor
-        pauseButton.setTitleColor(UIColor.lightBlueColorTimer(), forState: .Normal)
-        pauseButton.layer.borderColor = UIColor.lightBlueColorTimer().CGColor
+        startButton.setTitleColor(UIColor.blueColorTimer(), for: UIControlState())
+        startButton.layer.borderColor = UIColor.blueColorTimer().cgColor
+        pauseButton.setTitleColor(UIColor.lightBlueColorTimer(), for: UIControlState())
+        pauseButton.layer.borderColor = UIColor.lightBlueColorTimer().cgColor
     }
     
     func switchToPickerView() {
-        pickerStackView.hidden = false
-        timerLabel.hidden = true
-        progressView.hidden = true
-        startButton.setTitle("Start", forState: .Normal)
+        pickerStackView.isHidden = false
+        timerLabel.isHidden = true
+        progressView.isHidden = true
+        startButton.setTitle("Start", for: UIControlState())
         
-        startButton.setTitleColor(UIColor.lightBlueColorTimer(), forState: .Normal)
-        startButton.layer.borderColor = UIColor.lightBlueColorTimer().CGColor
-        pauseButton.setTitleColor(UIColor.blueColorTimer(), forState: .Normal)
-        pauseButton.layer.borderColor = UIColor.blueColorTimer().CGColor
+        startButton.setTitleColor(UIColor.lightBlueColorTimer(), for: UIControlState())
+        startButton.layer.borderColor = UIColor.lightBlueColorTimer().cgColor
+        pauseButton.setTitleColor(UIColor.blueColorTimer(), for: UIControlState())
+        pauseButton.layer.borderColor = UIColor.blueColorTimer().cgColor
     }
 
     /*

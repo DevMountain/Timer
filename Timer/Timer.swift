@@ -8,14 +8,16 @@
 
 import UIKit
 
+extension Notification.Name {
+	static let secondTickNotification = Notification.Name("TimerSecondTickNotification")
+	static let timerCompleteNotification = Notification.Name("TimerCompleteNotification")
+}
+
 class Timer: NSObject {
-    
-    static let notificationSecondTick = "TimerNotificationSecondTick"
-    static let notificationComplete = "TimerNotificationComplete"
-    
-    private(set) var seconds = NSTimeInterval(0)
-    private(set) var totalSeconds = NSTimeInterval(0)
-    private var timer: NSTimer?
+	
+    fileprivate(set) var seconds = TimeInterval(0)
+    fileprivate(set) var totalSeconds = TimeInterval(0)
+    fileprivate var timer: Foundation.Timer?
     var isOn: Bool {
         get {
             if timer != nil {
@@ -56,14 +58,14 @@ class Timer: NSObject {
         }
     }
     
-    func setTimer(seconds: NSTimeInterval, totalSeconds: NSTimeInterval) {
+    func setTimer(_ seconds: TimeInterval, totalSeconds: TimeInterval) {
         self.seconds = seconds
         self.totalSeconds = totalSeconds
     }
     
     func startTimer() {
         if !isOn {
-            timer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(1.0), target: self, selector: "secondTick", userInfo: nil, repeats: true)
+			timer = Foundation.Timer.scheduledTimer(timeInterval: TimeInterval(1.0), target: self, selector: #selector(secondTick(_:)), userInfo: nil, repeats: true)
         }
     }
     
@@ -74,12 +76,12 @@ class Timer: NSObject {
         }
     }
 
-    func secondTick() {
-        seconds--
-        NSNotificationCenter.defaultCenter().postNotificationName(Timer.notificationSecondTick, object: self)
+	func secondTick(_ notification: Notification) {
+        seconds -= 1
+        NotificationCenter.default.post(name: .secondTickNotification, object: self)
         if seconds <= 0 {
             stopTimer()
-            NSNotificationCenter.defaultCenter().postNotificationName(Timer.notificationComplete, object: self)
+            NotificationCenter.default.post(name: .timerCompleteNotification, object: self)
         }
     }
 }

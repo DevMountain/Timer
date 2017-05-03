@@ -19,17 +19,17 @@ class AlarmViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        datePicker.minimumDate = NSDate()
+        datePicker.minimumDate = Date()
         // Do any additional setup after loading the view.
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "switchToAlarmNotSetView", name: Alarm.notificationComplete, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(switchToAlarmNotSetView(_:)), name: .alarmFiredNotification, object: nil)
         
-        guard let scheduledNotifications = UIApplication.sharedApplication().scheduledLocalNotifications else { return }
+        guard let scheduledNotifications = UIApplication.shared.scheduledLocalNotifications else { return }
         alarm.cancel()
         
         for notification in scheduledNotifications {
-            if notification.category == Alarm.categoryAlarm {
-                UIApplication.sharedApplication().cancelLocalNotification(notification)
+            if notification.category == Alarm.alarmCategory {
+                UIApplication.shared.cancelLocalNotification(notification)
                 
                 guard let fireDate = notification.fireDate else { return }
                 alarm.arm(fireDate)
@@ -43,10 +43,10 @@ class AlarmViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func alarmButtonTapped(sender: AnyObject) {
+    @IBAction func alarmButtonTapped(_ sender: AnyObject) {
         if alarm.isArmed {
             alarm.cancel()
-            switchToAlarmNotSetView()
+            switchToAlarmNotSetView(nil)
         } else {
             armAlarm()
         }
@@ -57,43 +57,32 @@ class AlarmViewController: UIViewController {
         switchToAlarmSetView()
     }
     
-    func switchToAlarmSetView() {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.timeStyle = .ShortStyle
-        dateFormatter.dateStyle = .LongStyle
+	func switchToAlarmSetView() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .short
+        dateFormatter.dateStyle = .long
         
         messageLabel.text = "Your alarm is set!"
         
         if let date = alarm.alarmDate {
-            dateLabel.text = dateFormatter.stringFromDate(date)
+            dateLabel.text = dateFormatter.string(from: date)
             datePicker.date = date
         } else {
             dateLabel.text = ""
         }
         
-        alarmButton.setTitle("Cancel Alarm", forState: .Normal)
-        datePicker.userInteractionEnabled = false
+        alarmButton.setTitle("Cancel Alarm", for: UIControlState())
+        datePicker.isUserInteractionEnabled = false
     }
     
-    func switchToAlarmNotSetView() {
+    func switchToAlarmNotSetView(_ notification: Notification?) {
         alarm.cancel()
         messageLabel.text = "Your alarm is not set."
         dateLabel.text = ""
-        alarmButton.setTitle("Set Alarm", forState: .Normal)
-        datePicker.minimumDate = NSDate()
-        datePicker.date = NSDate()
-        datePicker.userInteractionEnabled = true
+        alarmButton.setTitle("Set Alarm", for: UIControlState())
+        datePicker.minimumDate = Date()
+        datePicker.date = Date()
+        datePicker.isUserInteractionEnabled = true
     }
-    
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
     
 }

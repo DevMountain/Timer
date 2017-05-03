@@ -9,11 +9,14 @@
 import Foundation
 import UIKit
 
+extension Notification.Name {
+	static let alarmFiredNotification = Notification.Name("alarmFiredNotification")
+}
+
 class Alarm: NSObject {
-    static let categoryAlarm = "categoryAlarm"
-    static let notificationComplete = "notificationComplete"
+    static let alarmCategory = "alarmCategory"
     
-    private(set) var alarmDate: NSDate?
+    fileprivate(set) var alarmDate: Date?
     var isArmed: Bool {
         get {
             if alarmDate != nil {
@@ -24,18 +27,18 @@ class Alarm: NSObject {
         }
     }
     
-    private var localNotification: UILocalNotification?
+    fileprivate var localNotification: UILocalNotification?
     
-    func arm(fireDate: NSDate) {
+    func arm(_ fireDate: Date) {
         alarmDate = fireDate
         let alarmNotification = UILocalNotification()
         alarmNotification.fireDate = alarmDate
-        alarmNotification.timeZone = NSTimeZone.localTimeZone()
+        alarmNotification.timeZone = TimeZone.autoupdatingCurrent
         alarmNotification.soundName = "sms-received3.caf"
         alarmNotification.alertBody = "Alarm Complete!"
-        alarmNotification.category = Alarm.categoryAlarm
+        alarmNotification.category = Alarm.alarmCategory
         
-        UIApplication.sharedApplication().scheduleLocalNotification(alarmNotification)
+        UIApplication.shared.scheduleLocalNotification(alarmNotification)
         localNotification = alarmNotification
     }
     
@@ -44,14 +47,15 @@ class Alarm: NSObject {
         if isArmed {
             alarmDate = nil
             if let localNotification = localNotification {
-                UIApplication.sharedApplication().cancelLocalNotification(localNotification)
+                UIApplication.shared.cancelLocalNotification(localNotification)
             }
         }
         
     }
     
     static func alarmComplete() {
-        NSNotificationCenter.defaultCenter().postNotificationName(Alarm.notificationComplete, object: nil)
+		let nc = NotificationCenter.default
+		nc.post(name: .alarmFiredNotification, object: self, userInfo: nil)
     }
     
     
